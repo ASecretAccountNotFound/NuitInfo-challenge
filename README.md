@@ -23,7 +23,7 @@ docker-compose up --build
 
 ### Challenge 1: SQL Injection
 
-**Port:** `6000`  
+**Port:** `80`  
 **Flag:** `FLAG{SQHELL_h0p3_Y0u_d1d_it_a_la_mano_sinon_tocard}`  
 **Description:** Un développeur a oublié de faire des requêtes préparées et a directement concaténé les entrées utilisateur dans ses requêtes SQL. Montrez-lui pourquoi c'est une mauvaise idée.
 
