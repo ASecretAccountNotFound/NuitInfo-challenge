@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  challenge1-sqli:
+    build:
+      context: ./challenge1-sqli/pub
+      dockerfile: Dockerfile
+    ports:
+      - "6000:5000"
+    container_name: challenge1-sqli
+
+  challenge2-cve-metasploit:
+    build:
+      context: ./challenge2-cve-metasploit/pub
+      dockerfile: Dockerfile
+    network_mode: host
+    container_name: challenge2-cve-metasploit
+
+  challenge3-ret2win:
+    build:
+      context: ./challenge3-ret2win/pub
+      dockerfile: Dockerfile
+    ports:
+      - "1337:1337"
+    container_name: challenge3-ret2win
+
+  challenge4-ret2libc:
+    build:
+      context: ./challenge4-ret2libc/pub
+      dockerfile: Dockerfile
+    ports:
+      - "1338:1337"
+    container_name: challenge4-ret2libc
+
+  challenge5-jail-bash:
+    build:
+      context: ./challenge5-jail-bash
+      dockerfile: Dockerfile
+    restart: always
+    privileged: true
+    ports:
+      - "20000:5000"
+    container_name: challenge5-jail-bash
+

@@ -1,0 +1,9 @@
+services:
+  shell:
+    restart: always
+    privileged: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "20000:5000"
