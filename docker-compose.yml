@@ -6,7 +6,7 @@ services:
       context: ./challenge1-sqli/pub
       dockerfile: Dockerfile
     ports:
-      - "6000:5000"
+      - "80:5000"
     container_name: challenge1-sqli
 
   challenge2-cve-metasploit:
